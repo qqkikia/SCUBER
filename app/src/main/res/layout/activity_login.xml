@@ -4,44 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.macbook.scuber.Login"
+    android:background="@color/loginColor"
     android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    android:padding="15dp"
+    tools:context="com.example.macbook.scuber.Login">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="SCUBER"
-        android:textSize="15pt"
         android:textColor="@color/white"
-        android:gravity="center_horizontal"/>
+        android:textSize="15pt" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Sign In"
+        android:textColor="@color/grey"
+        android:textSize="8pt" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/facebookBlue"
+        android:text="CONTINUE WITH FACEBOOK"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="or Use email"
+        android:textColor="@color/grey"
+        android:textSize="8pt"/>
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email Address"/>
+        android:background="@drawable/top_corners_rounded_edit_text_background"
+        android:hint="Email Address"
+        android:padding="12dp"
+        android:textColorHint="@color/grey" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"/>
+        android:background="@drawable/bottom_corners_rounded_edit_text_background"
+        android:hint="Password"
+        android:padding="12dp"
+        android:textColorHint="@color/grey" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <CheckBox
-        android:id="@+id/rememberMeCheckBox"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remember Me"/>
+
+        <CheckBox
+            android:id="@+id/rememberMeCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Remember Me"
+            android:textColor="@color/grey" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="Forgot Password"
+            android:textColor="@color/textButtonBlue"/>
+    </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Forgot Password" />
+        android:text="SIGN IN"
+        android:textColor="@color/white"
+        android:background="@color/textButtonBlue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textColor="@color/grey"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/textButtonBlue"
+            android:background="@null"/>
     </LinearLayout>
 </LinearLayout>
