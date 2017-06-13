@@ -2,4 +2,5 @@
     <string name="app_name">SCUBER</string>
     <string name="facebook_app_id">1935312280047039</string>
     <string name="fb_login_protocol_scheme">fb1935312280047039</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
