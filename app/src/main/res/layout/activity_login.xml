@@ -25,12 +25,13 @@
         android:textColor="@color/grey"
         android:textSize="8pt" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/facebookBlue"
-        android:text="CONTINUE WITH FACEBOOK"
-        android:textColor="@color/white" />
+    <com.facebook.login.widget.LoginButton
+    android:id="@+id/fbLoginButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="30dp"
+    android:layout_marginBottom="30dp" />
 
     <TextView
         android:layout_width="match_parent"
