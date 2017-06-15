@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -39,17 +41,11 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".Login"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/AppTheme.NoActionBar">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
         <!--
@@ -67,8 +63,13 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".RequestRideActivity"></activity>
     </application>
 
 </manifest>

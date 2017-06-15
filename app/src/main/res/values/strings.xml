@@ -3,4 +3,6 @@
     <string name="facebook_app_id">1935312280047039</string>
     <string name="fb_login_protocol_scheme">fb1935312280047039</string>
     <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyBkl6UKQ8KeezK4YbG5cHshjsSC8GlvEa0</string>
+
 </resources>

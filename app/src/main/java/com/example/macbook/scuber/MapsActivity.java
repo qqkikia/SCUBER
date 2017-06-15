@@ -1,7 +1,9 @@
 package com.example.macbook.scuber;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,6 +26,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    public void ToRequestRide(View view){
+        Intent i = new Intent(getApplicationContext(),RequestRideActivity.class);
+        startActivity(i);
+    }
 
     /**
      * Manipulates the map once available.
