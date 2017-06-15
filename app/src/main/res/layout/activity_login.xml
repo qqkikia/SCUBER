@@ -151,6 +151,7 @@
             android:background="@drawable/circle" />
 
         <Button
+            android:id="@+id/forgotPasswordButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -158,14 +159,15 @@
             android:textColor="@color/textButtonBlue" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/textButtonBlue"
-        android:text="SIGN IN"
-        android:textColor="@color/white" />
+            <Button
+                android:id="@+id/signInButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/textButtonBlue"
+                android:text="SIGN IN"
+                android:textColor="@color/white" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -186,6 +188,7 @@
             android:textColor="@color/grey" />
 
         <Button
+            android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
