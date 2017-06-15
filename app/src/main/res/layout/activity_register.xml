@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
@@ -8,6 +8,134 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.macbook.scuber.RegisterActivity">
+    tools:context="com.example.macbook.scuber.RegisterActivity"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account"
+        android:textSize="14pt"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EMAIL"/>
+
+    <EditText
+        android:id="@+id/regEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="name@example.com" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PASSWORD" />
+
+    <EditText
+        android:id="@+id/regPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="At least 5 characters"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:textSize="14pt"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NAME"/>
+
+    <EditText
+        android:id="@+id/regFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name" />
+
+    <EditText
+        android:id="@+id/regLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MOBILE NUMBER"/>
+
+    <EditText
+        android:id="@+id/regPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="0612345667"
+        android:inputType="phone" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="LANGUAGE"/>
+
+    <EditText
+        android:id="@+id/regLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gotta change this to a language picker" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment"
+        android:textSize="14pt"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CREDIT CARD NUMBER"/>
+
+    <EditText
+        android:id="@+id/regCreditNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="1234 5678 9012 3456" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CVV"/>
+
+    <EditText
+        android:id="@+id/regCvv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="123" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EXPIRATION DATE"/>
+
+    <EditText
+        android:id="@+id/regCreditExpDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="MM/YY" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POSTAL CODE"/>
+
+    <EditText
+        android:id="@+id/regPostCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="94103" />
+
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/textButtonBlue"
+        android:text="CREATE ACCOUNT"
+        android:textColor="@color/white" />
+
+</LinearLayout>
