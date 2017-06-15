@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -27,17 +29,17 @@ import com.facebook.appevents.AppEventsLogger;
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private CallbackManager mCallbackManager;
+    private String email;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        String email;
-        String password;
         mCallbackManager = CallbackManager.Factory.create();
         //Login button to be implemented in XML FILE
-        LoginButton loginButton = new LoginButton(this,null,0); //= (LoginButton) findViewById(R.id.button_facebook_login);
+        LoginButton loginButton = (LoginButton) findViewById(R.id.fbLoginButton);
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -77,6 +79,8 @@ public void handleFacebookAccessToken(AccessToken token){
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("TagSuccess", "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
+                        Intent i = new Intent(getApplicationContext(),MapsActivity.class);
+                        startActivity(i);
                         //updateUI(user);
                     } else {
                         // If sign in fails, display a message to the user.
@@ -91,7 +95,11 @@ public void handleFacebookAccessToken(AccessToken token){
             });
 
 }
-    public void SignInUser(String email, String password){
+    public void SignInUser(View view){
+        EditText emailEdit = (EditText)findViewById(R.id.email);
+        EditText passwordEdit = (EditText)findViewById(R.id.email);
+        email = emailEdit.getText().toString();
+        password = passwordEdit.getText().toString();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -100,11 +108,13 @@ public void handleFacebookAccessToken(AccessToken token){
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TagSuccess", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+                            startActivity(i);
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TagFailure", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "Authentication failed.",
+                            Toast.makeText(Login.this, email,
                                     Toast.LENGTH_SHORT).show();
                         }
 
