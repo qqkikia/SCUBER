@@ -1,6 +1,8 @@
 package com.example.macbook.scuber;
 
 import android.app.FragmentManager;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 
@@ -31,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    ImageView regStep1, regStep2, regStep3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,10 @@ public class RegisterActivity extends AppCompatActivity {
         String email;
         String password;
         String passwordCheck;
+
+        regStep1 = (ImageView) findViewById(R.id.regStep1);
+        regStep2 = (ImageView) findViewById(R.id.regStep2);
+        regStep3 = (ImageView) findViewById(R.id.regStep3);
     }
 
 
@@ -60,11 +69,20 @@ public class RegisterActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             /** Show a Fragment based on the position of the current screen */
             if (position == 0) {
+                regStep1.setBackgroundColor(Color.BLUE);
+                regStep2.setBackgroundColor(Color.GRAY);
+                regStep3.setBackgroundColor(Color.GRAY);
                 return new register1();
             } else if (position == 1) {
+                regStep1.setBackgroundColor(Color.GRAY);
+                regStep2.setBackgroundColor(Color.BLUE);
+                regStep3.setBackgroundColor(Color.GRAY);
                 return new register2();
             } else
-                return new register3();
+                regStep1.setBackgroundColor(Color.GRAY);
+            regStep2.setBackgroundColor(Color.GRAY);
+            regStep3.setBackgroundColor(Color.BLUE);
+            return new register3();
         }
 
         @Override

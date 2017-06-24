@@ -2,18 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.register2"
-    android:orientation="vertical">
+    android:background="@color/loginColor"
+    android:orientation="vertical"
+    tools:context="layout.register2">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Profile"
-        android:textSize="14pt"/>
+        android:textSize="14pt" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NAME"/>
+        android:text="NAME" />
 
     <EditText
         android:id="@+id/regFirstName"
@@ -26,10 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Last Name" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MOBILE NUMBER"/>
+        android:text="MOBILE NUMBER" />
 
     <EditText
         android:id="@+id/regPhoneNumber"
@@ -37,10 +40,11 @@
         android:layout_height="wrap_content"
         android:hint="0612345667"
         android:inputType="phone" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="LANGUAGE"/>
+        android:hint="LANGUAGE" />
 
     <EditText
         android:id="@+id/regLanguage"

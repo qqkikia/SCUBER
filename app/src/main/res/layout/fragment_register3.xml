@@ -2,48 +2,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.register3"
-    android:orientation="vertical">
+    android:background="@color/loginColor"
+    android:orientation="vertical"
+    tools:context="layout.register3">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Payment"
-        android:textSize="14pt"/>
+        android:textSize="14pt" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CREDIT CARD NUMBER"/>
+        android:text="CREDIT CARD NUMBER" />
 
     <EditText
         android:id="@+id/regCreditNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="1234 5678 9012 3456" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CVV"/>
+        android:text="CVV" />
 
     <EditText
         android:id="@+id/regCvv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="123" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="EXPIRATION DATE"/>
+        android:text="EXPIRATION DATE" />
 
     <EditText
         android:id="@+id/regCreditExpDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="MM/YY" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="POSTAL CODE"/>
+        android:text="POSTAL CODE" />
 
     <EditText
         android:id="@+id/regPostCode"
