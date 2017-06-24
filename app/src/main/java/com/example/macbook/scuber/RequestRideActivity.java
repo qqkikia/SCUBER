@@ -1,6 +1,7 @@
 package com.example.macbook.scuber;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Geocoder;
@@ -54,6 +55,8 @@ public class RequestRideActivity extends AppCompatActivity implements OnMapReady
     public GoogleMap mMap;
     private double curLat;
     private double curLng;
+    private double destLat;
+    private double destLng;
     private ArrayList<Marker> markers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,8 @@ public class RequestRideActivity extends AppCompatActivity implements OnMapReady
                 // TODO: Get info about the selected place.
                 Log.i("TagSuccess", "Place: " + place.getName());
                 LatLng destinationLocation = place.getLatLng();
+                destLat = destinationLocation.latitude;
+                destLat = destinationLocation.longitude;
                 UpdateCurrentLocation(null);
                 UpdateMap(new LatLng(curLat,curLng),destinationLocation);
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -271,24 +276,25 @@ public class RequestRideActivity extends AppCompatActivity implements OnMapReady
             if(gps.canGetLocation()) {
                 double lat = gps.getLatitude();
                 double lng = gps.getLongitude();
-                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-                try {
-                    List<android.location.Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-                    currentAddress = addresses.get(0).getAddressLine(0);
-                    curLat = lat;
-                    curLng = lng;
-                    TextView currentAddressTV = (TextView) findViewById(R.id.currentLocation);
-                    currentAddressTV.setText(currentAddress);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                curLat = lat;
+                curLng = lng;
+                TextView currentAddressTV = (TextView) findViewById(R.id.currentLocation);
+                currentAddressTV.setText(currentAddress);
+
             }
         } else{
             gps.showSettingsAlert();
 
         }
     }
-
+public void RequestRide(View v){
+    Intent i = new Intent(getApplicationContext(),WaitingActivity.class);
+    i.putExtra("lat1",curLat);
+    i.putExtra("lng1",curLng);
+    i.putExtra("lat2",destLat);
+    i.putExtra("lng2",destLng);
+    startActivity(i);
+}
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

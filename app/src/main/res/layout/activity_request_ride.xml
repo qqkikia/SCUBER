@@ -43,6 +43,12 @@
         android:layout_height="150dp"
         tools:context="com.example.macbook.scuber.RequestRideActivity"
         android:layout_below="@+id/updateLocationButton"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="request ride"
+        android:layout_below="@id/map"
+        android:onClick="RequestRide"/>
 
 
 </RelativeLayout>
