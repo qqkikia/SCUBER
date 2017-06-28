@@ -4,57 +4,79 @@
     android:layout_height="match_parent"
     android:background="@color/loginColor"
     android:orientation="vertical"
-    tools:context="layout.register3">
+    tools:context="layout.register3"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Payment"
-        android:textSize="14pt" />
+        android:textSize="14pt"
+        android:textColor="@color/grey"
+        android:gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CREDIT CARD NUMBER" />
+        android:text="CREDIT CARD NUMBER"
+        android:textColor="@color/grey"
+        android:gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/regCreditNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="1234 5678 9012 3456" />
+        android:hint="1234 5678 9012 3456"
+        android:background="@drawable/all_corners_rounded"
+        android:padding="12dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CVV" />
+        android:text="CVV"
+        android:textColor="@color/grey"
+        android:gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/regCvv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="123" />
+        android:hint="123"
+        android:background="@drawable/all_corners_rounded"
+        android:padding="12dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="EXPIRATION DATE" />
+        android:text="EXPIRATION DATE"
+        android:textColor="@color/grey"
+        android:gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/regCreditExpDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="MM/YY" />
+        android:hint="MM/YY"
+        android:background="@drawable/all_corners_rounded"
+        android:padding="12dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="POSTAL CODE" />
+        android:text="POSTAL CODE"
+        android:textColor="@color/grey"
+        android:gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/regPostCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="94103" />
+        android:hint="94103"
+        android:background="@drawable/all_corners_rounded"
+        android:padding="12dp"/>
 
     <Button
         android:id="@+id/createAccountButton"
