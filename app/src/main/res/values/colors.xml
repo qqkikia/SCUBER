@@ -10,4 +10,9 @@
     <color name="facebookBlue">#3B5998</color>
     <color name="loginColor">#001746</color>
     <color name="textButtonBlue">#0a9de7</color>
+    <color name="green">#36b400</color>
+
+    <color name="darkBlue">#051637</color>
+    <color name="lighterBlue">#263B5F</color>
+    <color name="yellow">#FEBD21</color>
 </resources>

@@ -3,6 +3,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,6 +13,11 @@
         android:layout_height="wrap_content"
         android:text="request a ride"
         android:onClick="ToRequestRide"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go to reg activity"
+        android:onClick="GoToRegisterActivity"/>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -21,6 +27,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.macbook.scuber.MapsActivity" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:layout_gravity="bottom"/>
 
 </FrameLayout>
 
@@ -33,4 +52,6 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
         android:background="#111"/>
+
+
 </android.support.v4.widget.DrawerLayout>
