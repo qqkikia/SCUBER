@@ -15,4 +15,7 @@
     <color name="darkBlue">#051637</color>
     <color name="lighterBlue">#263B5F</color>
     <color name="yellow">#FEBD21</color>
+    <color name="translucentYellow">#bbfebd21</color>
+    <color name="darkYellow">#dc9b00</color>
+    <color name="mainTabGrey">#E3EAF4</color>
 </resources>

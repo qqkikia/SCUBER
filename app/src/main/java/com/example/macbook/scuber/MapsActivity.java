@@ -22,8 +22,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-    private PagerSlidingTabStrip tabs;
-    private ViewPager pager;
+    private PagerSlidingTabStrip mainTabs;
+    private ViewPager mainPager;
     private MyPagerAdapter adapter;
 
     @Override
@@ -36,16 +36,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-        tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        pager = (ViewPager) findViewById(R.id.pager);
+        mainTabs = (PagerSlidingTabStrip) findViewById(R.id.mainTabs);
+        mainPager = (ViewPager) findViewById(R.id.mainPager);
         adapter = new MyPagerAdapter(getSupportFragmentManager());
 
-        pager.setAdapter(adapter);
-        tabs.setViewPager(pager);
+        mainPager.setAdapter(adapter);
+        mainTabs.setViewPager(mainPager);
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                 .getDisplayMetrics());
-        pager.setPageMargin(pageMargin);
+        mainPager.setPageMargin(pageMargin);
     }
 
     public void ToRequestRide(View view){
@@ -79,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = { "Home", "My rides", "My points", "Profile"};
+        private final String[] TITLES = { "Home", "My rides"/*, "My points", "Profile"*/};
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -97,7 +97,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         @Override
         public Fragment getItem(int position) {
-            return MyCardFragment.newInstance(position);
+            return CardFragment.newInstance(position);
         }
 
     }
