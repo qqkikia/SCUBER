@@ -34,19 +34,25 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
+                <Button
+                    android:id="@+id/pickupNow"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="PICKUP NOW" />
+                    android:text="PICKUP NOW"
+                    android:textColor="@color/darkBlue"
+                    android:background="@android:color/transparent"/>
 
-                <TextView
+                <Button
+                    android:id="@+id/pickupLater"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="SCHEDULE PICKUP" />
+                    android:text="SCHEDULE PICKUP"
+                    android:textColor="@color/grey"
+                    android:background="@android:color/transparent"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -54,7 +60,7 @@
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:layout_marginBottom="10dp"
             card_view:cardCornerRadius="4dp">
 
@@ -69,12 +75,26 @@
                     android:layout_width="0dp"
                     android:layout_height="85dp"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="top"
                     android:orientation="vertical">
-                    <ImageView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src=""/>
+                        android:text="From"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkBlue"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="To"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkBlue"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -88,9 +108,11 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:ellipsize="end"
-                        android:hint="From: Address, postcode, etc."
+                        android:hint="Address, postcode, etc."
                         android:maxLines="1"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:id="@+id/fromEditText"/>
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -102,9 +124,11 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:ellipsize="end"
-                        android:hint="To: Address, postcode, etc."
+                        android:hint="Address, postcode, etc."
                         android:maxLines="1"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textSize="14sp"
+                        android:id="@+id/toEditText"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -128,15 +152,16 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="85dp"
+                    android:layout_height="75dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_flip" />
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/ic_flip"
+                        android:id="@+id/flip" />
 
                 </LinearLayout>
 
