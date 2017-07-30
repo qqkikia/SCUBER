@@ -9,14 +9,16 @@ public class User {
     String userID;
     double lat;
     double lng;
+    String token;
 
     public User(){
 
     }
-    public User(String n, String ID, double lt, double lg){
+    public User(String n, String ID, double lt, double lg, String tkn){
         name = n;
         userID = ID;
         lat = lt;
         lng = lg;
+        token = tkn;
     }
 }

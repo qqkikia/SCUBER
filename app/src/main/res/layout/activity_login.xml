@@ -65,6 +65,7 @@
         android:layout_weight="0.7"
         android:background="@color/lighterBlue"
         android:text="SIGN IN"
+        android:onClick="SignInUser"
         android:textColor="@color/yellow"
         android:textSize="20sp" />
 

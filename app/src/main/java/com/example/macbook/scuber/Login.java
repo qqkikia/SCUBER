@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
     private String email;
     private String password;
     private SharedPreferences sharedPreferences;
+    DatabaseHandler databaseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         sharedPreferences = getApplicationContext().getSharedPreferences("login", getApplicationContext().MODE_PRIVATE);
+        databaseHandler = new DatabaseHandler();
     }
 
     @Override
@@ -63,6 +65,7 @@ public class Login extends AppCompatActivity {
                             UpdateSharedPref(email,password);
                             Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                             startActivity(i);
+
 
                         } else {
                             // If sign in fails, display a message to the user.

@@ -27,7 +27,7 @@ databaseReference.child("PendingRequests").child(request.userID).child("Request"
     }
 
     public void RegisterUser(User user){
-
+    databaseReference.child("users").child(user.token).setValue(user);
     }
 
 }
