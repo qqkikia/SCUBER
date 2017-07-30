@@ -1,6 +1,7 @@
 package com.example.macbook.scuber;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,35 +32,14 @@ public class Login extends AppCompatActivity {
     private CallbackManager mCallbackManager;
     private String email;
     private String password;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        mCallbackManager = CallbackManager.Factory.create();
-        //Login button to be implemented in XML FILE
-        LoginButton loginButton = (LoginButton) findViewById(R.id.fbLoginButton);
-        loginButton.setReadPermissions("email", "public_profile");
-        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d("TagSuccess", "facebook:onSuccess:" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d("TagCancel", "facebook:onCancel");
-                // ...
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d("TagError", "facebook:onError", error);
-                // ...
-            }
-        });
+        sharedPreferences = getApplicationContext().getSharedPreferences("login", getApplicationContext().MODE_PRIVATE);
     }
 
     @Override
@@ -68,36 +48,10 @@ public class Login extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-public void handleFacebookAccessToken(AccessToken token){
 
-    AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-    mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("TagSuccess", "signInWithCredential:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Intent i = new Intent(getApplicationContext(),MapsActivity.class);
-                        startActivity(i);
-                        //updateUI(user);
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w("TagFail", "signInWithCredential:failure", task.getException());
-                        Toast.makeText(Login.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                        //updateUI(null);
-                    }
-
-
-                }
-            });
-
-}
     public void SignInUser(View view){
         EditText emailEdit = (EditText)findViewById(R.id.email);
-        EditText passwordEdit = (EditText)findViewById(R.id.email);
+        EditText passwordEdit = (EditText)findViewById(R.id.password);
         email = emailEdit.getText().toString();
         password = passwordEdit.getText().toString();
         mAuth.signInWithEmailAndPassword(email, password)
@@ -106,15 +60,14 @@ public void handleFacebookAccessToken(AccessToken token){
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("TagSuccess", "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            UpdateSharedPref(email,password);
                             Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                             startActivity(i);
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TagFailure", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, email,
+                            Toast.makeText(Login.this, "Whoops, email and/or password is wrong",
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -123,12 +76,12 @@ public void handleFacebookAccessToken(AccessToken token){
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Pass the activity result back to the Facebook SDK
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+    public void UpdateSharedPref(String e, String p){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email",e);
+        editor.putString("password",p);
+        editor.commit();
     }
+
 
 }

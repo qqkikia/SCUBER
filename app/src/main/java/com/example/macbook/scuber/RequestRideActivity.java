@@ -35,6 +35,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONObject;
 
@@ -51,20 +54,27 @@ import java.util.Locale;
 
 public class RequestRideActivity extends AppCompatActivity implements OnMapReadyCallback {
     private String currentAddress = "------";
+    private Request request;
     private GPSTracker gps;
     public GoogleMap mMap;
+    private DatabaseHandler databaseHandler;
+    private FirebaseUser currentUser;
     private double curLat;
     private double curLng;
     private double destLat;
     private double destLng;
     private ArrayList<Marker> markers;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_ride);
+        databaseHandler = new DatabaseHandler();
         gps = new GPSTracker(this);
         markers = new ArrayList<Marker>();
-        UpdateCurrentLocation(null);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
@@ -75,7 +85,7 @@ public class RequestRideActivity extends AppCompatActivity implements OnMapReady
                 Log.i("TagSuccess", "Place: " + place.getName());
                 LatLng destinationLocation = place.getLatLng();
                 destLat = destinationLocation.latitude;
-                destLat = destinationLocation.longitude;
+                destLng = destinationLocation.longitude;
                 UpdateCurrentLocation(null);
                 UpdateMap(new LatLng(curLat,curLng),destinationLocation);
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -271,23 +281,10 @@ public class RequestRideActivity extends AppCompatActivity implements OnMapReady
             }
         }
     }
-    public void UpdateCurrentLocation(View view){
-        if(gps.isGPSEnabled){
-            if(gps.canGetLocation()) {
-                double lat = gps.getLatitude();
-                double lng = gps.getLongitude();
-                curLat = lat;
-                curLng = lng;
-                TextView currentAddressTV = (TextView) findViewById(R.id.currentLocation);
-                currentAddressTV.setText(currentAddress);
 
-            }
-        } else{
-            gps.showSettingsAlert();
-
-        }
-    }
 public void RequestRide(View v){
+    request = new Request(currentUser.getUid(),curLat,curLng,destLat,destLng,false, FirebaseInstanceId.getInstance().getToken());
+    databaseHandler.SendRequest(request);
     Intent i = new Intent(getApplicationContext(),WaitingActivity.class);
     i.putExtra("lat1",curLat);
     i.putExtra("lng1",curLng);
@@ -298,17 +295,36 @@ public void RequestRide(View v){
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        LatLng currentLocation = new LatLng(curLat, curLng);
-        Marker marker = mMap.addMarker(new MarkerOptions().position(currentLocation).title("Current Location"));
-        markers.add(0,marker);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(currentLocation).zoom(14.0f).build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        mMap.moveCamera(cameraUpdate);
+        UpdateCurrentLocation(null);
 
 
     }
-
+    public void UpdateCurrentLocation(View v) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation()
+                .addOnSuccessListener( this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            curLat = location.getLatitude();
+                            curLng = location.getLongitude();
+                            LatLng curLatLng = new LatLng(curLat,curLng);
+                            mMap.addMarker(new MarkerOptions().position(curLatLng).title("You're right here"));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(curLatLng));
+                        }
+                    }
+                });
+    }
     public void UpdateMap(LatLng loc1, LatLng loc2){
         mMap.clear();
         markers.clear();
