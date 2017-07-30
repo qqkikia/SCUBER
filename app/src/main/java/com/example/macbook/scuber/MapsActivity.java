@@ -22,10 +22,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-    private PagerSlidingTabStrip mainTabs;
-    private ViewPager mainPager;
-    private MyPagerAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +30,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-        mainTabs = (PagerSlidingTabStrip) findViewById(R.id.mainTabs);
-        mainPager = (ViewPager) findViewById(R.id.mainPager);
-        adapter = new MyPagerAdapter(getSupportFragmentManager());
-
-        mainPager.setAdapter(adapter);
-        mainTabs.setViewPager(mainPager);
-
-        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
-                .getDisplayMetrics());
-        mainPager.setPageMargin(pageMargin);
     }
 
     public void ToRequestRide(View view){
@@ -75,30 +59,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
-
-    public class MyPagerAdapter extends FragmentPagerAdapter {
-
-        private final String[] TITLES = { "Home", "My rides"/*, "My points", "Profile"*/};
-
-        public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return TITLES[position];
-        }
-
-        @Override
-        public int getCount() {
-            return TITLES.length;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return CardFragment.newInstance(position);
-        }
-
     }
 }
