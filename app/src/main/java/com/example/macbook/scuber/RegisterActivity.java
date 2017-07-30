@@ -1,20 +1,13 @@
 package com.example.macbook.scuber;
 
-import android.app.FragmentManager;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 
@@ -34,7 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    ImageView regStep1, regStep2, regStep3;
+    TextView step1, step2, step3;
+    Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
 
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager = (ViewPager) findViewById(R.id.mainPager);
 /** set the adapter for ViewPager */
         mViewPager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
 
@@ -50,9 +44,11 @@ public class RegisterActivity extends AppCompatActivity {
         String password;
         String passwordCheck;
 
-        regStep1 = (ImageView) findViewById(R.id.regStep1);
-        regStep2 = (ImageView) findViewById(R.id.regStep2);
-        regStep3 = (ImageView) findViewById(R.id.regStep3);
+        step1 = (TextView) findViewById(R.id.step1);
+        step2 = (TextView) findViewById(R.id.step2);
+        step3 = (TextView) findViewById(R.id.step3);
+
+        registerButton = (Button) findViewById(R.id.registerButton);
     }
 
 
@@ -69,27 +65,27 @@ public class RegisterActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             /** Show a Fragment based on the position of the current screen */
             if (position == 0) {
-                regStep1.setBackgroundColor(Color.BLUE);
-                regStep2.setBackgroundColor(Color.GRAY);
-                regStep3.setBackgroundColor(Color.GRAY);
+                step1.setTextColor(getResources().getColor(R.color.green));
                 return new register1();
-            } else if (position == 1) {
-                regStep1.setBackgroundColor(Color.GRAY);
-                regStep2.setBackgroundColor(Color.BLUE);
-                regStep3.setBackgroundColor(Color.GRAY);
+            }
+            if (position == 1) {
+                step2.setTextColor(getResources().getColor(R.color.green));
                 return new register2();
+            }
+            if (position == 2) {
+                step3.setTextColor(getResources().getColor(R.color.green));
+                registerButton.setText("CREATE ACCOUNT");
+                return new register3();
             } else
-                regStep1.setBackgroundColor(Color.GRAY);
-            regStep2.setBackgroundColor(Color.GRAY);
-            regStep3.setBackgroundColor(Color.BLUE);
-            return new register3();
+                return new register3();
         }
 
         @Override
         public int getCount() {
-            // Show 2 total pages.
+            // Show 3 total pages.
             return 3;
         }
+
     }
 
 

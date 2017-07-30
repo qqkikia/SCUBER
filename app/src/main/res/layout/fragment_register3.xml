@@ -14,16 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Payment"
-        android:textSize="14pt"
+        android:textSize="@dimen/register_activity_title_text_size"
         android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/title_bottom_margin"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CREDIT CARD NUMBER"
         android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/subtitle_bottom_margin"/>
 
     <EditText
         android:id="@+id/regCreditNumber"
@@ -31,14 +33,16 @@
         android:layout_height="wrap_content"
         android:hint="1234 5678 9012 3456"
         android:background="@drawable/all_corners_rounded"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        android:layout_marginBottom="@dimen/edit_text_bottom_margin"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CVV"
         android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/subtitle_bottom_margin"/>
 
     <EditText
         android:id="@+id/regCvv"
@@ -46,14 +50,16 @@
         android:layout_height="wrap_content"
         android:hint="123"
         android:background="@drawable/all_corners_rounded"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        android:layout_marginBottom="@dimen/edit_text_bottom_margin"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="EXPIRATION DATE"
         android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/subtitle_bottom_margin"/>
 
     <EditText
         android:id="@+id/regCreditExpDate"
@@ -61,14 +67,16 @@
         android:layout_height="wrap_content"
         android:hint="MM/YY"
         android:background="@drawable/all_corners_rounded"
-        android:padding="12dp"/>
+        android:padding="12dp"
+        android:layout_marginBottom="@dimen/edit_text_bottom_margin"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="POSTAL CODE"
         android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/subtitle_bottom_margin"/>
 
     <EditText
         android:id="@+id/regPostCode"
@@ -76,16 +84,7 @@
         android:layout_height="wrap_content"
         android:hint="94103"
         android:background="@drawable/all_corners_rounded"
-        android:padding="12dp"/>
-
-    <Button
-        android:id="@+id/createAccountButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/textButtonBlue"
-        android:text="CREATE ACCOUNT"
-        android:textColor="@color/white" />
+        android:padding="12dp"
+        android:layout_marginBottom="@dimen/edit_text_bottom_margin"/>
 
 </LinearLayout>

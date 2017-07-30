@@ -12,33 +12,37 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/title_bottom_margin"
+        android:gravity="center_horizontal"
         android:text="Account"
         android:textColor="@color/grey"
-        android:textSize="14pt"
-        android:gravity="center_horizontal"/>
+        android:textSize="@dimen/register_activity_title_text_size" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/subtitle_bottom_margin"
+        android:gravity="center_horizontal"
         android:text="EMAIL"
-        android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:textColor="@color/grey" />
 
     <EditText
         android:id="@+id/regEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/edit_text_bottom_margin"
         android:background="@drawable/all_corners_rounded"
         android:hint="name@example.com"
         android:inputType="textEmailAddress"
-        android:padding="12dp"/>
+        android:padding="12dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/subtitle_bottom_margin"
+        android:gravity="center_horizontal"
         android:text="PASSWORD"
-        android:textColor="@color/grey"
-        android:gravity="center_horizontal"/>
+        android:textColor="@color/grey" />
 
     <EditText
         android:id="@+id/regPassword"
@@ -47,6 +51,7 @@
         android:background="@drawable/all_corners_rounded"
         android:hint="At least 5 characters"
         android:inputType="textPassword"
-        android:padding="12dp"/>
+        android:padding="12dp" />
+
 
 </LinearLayout>
